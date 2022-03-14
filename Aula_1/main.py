@@ -2,6 +2,7 @@ import time
 
 import pyautogui
 import pyperclip
+import pandas as pd
 
 # Passo 1: Entrar no sistema da empresa (Google Drive)
 
@@ -22,6 +23,14 @@ pyautogui.click(x=875, y=419)
 pyautogui.click(x=1712, y=193)
 pyautogui.click(x=1509, y=562)
 # Passo 3: Exportar a base de dados
+tabela = pd.read_excel(r"E:/Arquivos/Downloads/Vendas - Dez.xlsx")
+print(tabela)
+
+faturamento = tabela['Valor Final'].sum()
+quantidade = tabela['Quantidade'].sum()
+print(faturamento)
+print(quantidade)
+
 # Passo 4: Calcular os indicadores (Faturamento e quantidade de produtos
 # Vendidos)
 # Passo 5: Enviar um e-mail para a diretoria com os indicadores
