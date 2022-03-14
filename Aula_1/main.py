@@ -45,9 +45,20 @@ pyautogui.press('enter')
 time.sleep(5)
 
 # Clicar no botão escrever
+pyautogui.click(x=79, y=207)
 
 # Escrever o destinatário
+destinatario = 'felipperafaelrls@gmail.com'
+pyperclip.copy(destinatario)
+pyautogui.hotkey('ctrl', 'v')
 
+# Escrever assunto
+pyautogui.click(x=1317, y=466)
+assunto = 'Planilha com indicadores'
+pyperclip.copy(assunto)
+pyautogui.hotkey('ctrl', 'v')
 # Escrever o corpo do email
+
+
 
 # Enviar o Email
