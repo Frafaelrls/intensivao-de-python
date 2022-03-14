@@ -28,9 +28,26 @@ print(tabela)
 
 faturamento = tabela['Valor Final'].sum()
 quantidade = tabela['Quantidade'].sum()
-print(faturamento)
-print(quantidade)
+
 
 # Passo 4: Calcular os indicadores (Faturamento e quantidade de produtos
 # Vendidos)
+
+print(faturamento)
+print(quantidade)
+
 # Passo 5: Enviar um e-mail para a diretoria com os indicadores
+
+pyautogui.hotkey('ctrl', 't')  # nova aba
+pyperclip.copy('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox')
+pyautogui.hotkey('ctrl', 'v')
+pyautogui.press('enter')
+time.sleep(5)
+
+# Clicar no botão escrever
+
+# Escrever o destinatário
+
+# Escrever o corpo do email
+
+# Enviar o Email
