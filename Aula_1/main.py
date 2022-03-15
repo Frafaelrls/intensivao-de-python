@@ -1,4 +1,6 @@
 import time
+import glob
+import os
 
 import pyautogui
 import pyperclip
@@ -23,7 +25,18 @@ pyautogui.click(x=875, y=419)
 pyautogui.click(x=1712, y=193)
 pyautogui.click(x=1509, y=562)
 # Passo 3: Exportar a base de dados
-tabela = pd.read_excel(r"E:/Arquivos/Downloads/Vendas - Dez.xlsx")
+
+time.sleep(5)
+lista_os_arquivos = glob.glob(r'E:\Arquivos\Downloads\*.xlsx')
+ultimo_arquivo = max(lista_os_arquivos, key=os.path.getctime)
+nome = ultimo_arquivo[-17:]
+tabela = pd.read_excel(rf"E:/Arquivos/Downloads/{nome}",
+                       sheet_name='Plan1')
+
+# Passo 3.5: Apagar a base de dados
+time.sleep(1)
+caminho = f'E:/Arquivos/Downloads/{nome}'
+os.remove(caminho)
 print(tabela)
 
 faturamento = tabela['Valor Final'].sum()
@@ -54,18 +67,29 @@ pyperclip.copy(destinatario)
 pyautogui.hotkey('ctrl', 'v')
 
 # Escrever assunto
-pyautogui.click(x=1317, y=466)
+pyautogui.press('tab')
 assunto = 'Planilha com indicadores'
 pyperclip.copy(assunto)
 pyautogui.hotkey('ctrl', 'v')
 
 # Escrever o corpo do email
-pyautogui.click(x=1363, y=525)
-corpo = f'Olá, segue relatório com os indicadores mensais.\n\nFaturamento: ' \
-        f'R$ {faturamento}\nQuantidade: {quantidade}\nAtenciosamente.'
+pyautogui.press('tab')
+
+corpo = f'''
+Olá, 
+
+Segue relatório com os indicadores mensais.
+
+Faturamento: R${faturamento}
+Quantidade: {quantidade}
+
+Atenciosamente
+'''
+
+#corpo = f'Olá, segue relatório com os indicadores mensais.\n\nFaturamento: ' \
+        #f'R$ {faturamento}\nQuantidade: {quantidade}\nAtenciosamente.'
 pyperclip.copy(corpo)
 pyautogui.hotkey('ctrl', 'v')
 
-
-
 # Enviar o Email
+pyautogui.hotkey('ctrl', 'enter')
