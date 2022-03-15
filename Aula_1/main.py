@@ -14,7 +14,7 @@ pyautogui.hotkey('win', 'r')
 pyautogui.write('chrome.exe')
 pyautogui.press('enter')
 pyperclip.copy('https://drive.google.com/drive/u/0/folders/1cmlvEW1YtcKRAOrw5'
-                'Pc9QqZnZeskYauh')
+               'Pc9QqZnZeskYauh')
 pyautogui.hotkey('ctrl', 'v')
 pyautogui.press('enter')
 
@@ -39,12 +39,11 @@ caminho = f'E:/Arquivos/Downloads/{nome}'
 os.remove(caminho)
 print(tabela)
 
-faturamento = tabela['Valor Final'].sum()
-quantidade = tabela['Quantidade'].sum()
-
-
 # Passo 4: Calcular os indicadores (Faturamento e quantidade de produtos
 # Vendidos)
+
+faturamento = tabela['Valor Final'].sum()
+quantidade = tabela['Quantidade'].sum()
 
 print(faturamento)
 print(quantidade)
@@ -80,14 +79,12 @@ Olá,
 
 Segue relatório com os indicadores mensais.
 
-Faturamento: R${faturamento}
-Quantidade: {quantidade}
+Faturamento: R$ {faturamento:,.2f}
+Quantidade: {quantidade:,}
 
 Atenciosamente
 '''
 
-#corpo = f'Olá, segue relatório com os indicadores mensais.\n\nFaturamento: ' \
-        #f'R$ {faturamento}\nQuantidade: {quantidade}\nAtenciosamente.'
 pyperclip.copy(corpo)
 pyautogui.hotkey('ctrl', 'v')
 
