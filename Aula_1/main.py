@@ -48,7 +48,8 @@ time.sleep(5)
 pyautogui.click(x=79, y=207)
 
 # Escrever o destinatário
-destinatario = 'felipperafaelrls@gmail.com'
+destinatario = open('usuario/email.txt', encoding='utf-8')
+destinatario = destinatario.read()
 pyperclip.copy(destinatario)
 pyautogui.hotkey('ctrl', 'v')
 
@@ -57,7 +58,13 @@ pyautogui.click(x=1317, y=466)
 assunto = 'Planilha com indicadores'
 pyperclip.copy(assunto)
 pyautogui.hotkey('ctrl', 'v')
+
 # Escrever o corpo do email
+pyautogui.click(x=1363, y=525)
+corpo = f'Olá, segue relatório com os indicadores mensais.\n\nFaturamento: ' \
+        f'R$ {faturamento}\nQuantidade: {quantidade}\nAtenciosamente.'
+pyperclip.copy(corpo)
+pyautogui.hotkey('ctrl', 'v')
 
 
 
