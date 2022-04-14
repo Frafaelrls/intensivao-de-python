@@ -43,6 +43,12 @@ tabela = tabela.dropna(how='any', axis=0)
 print(tabela.info())
 
 """Passo 4 _ Analise inicial / Analise global"""
+# Etapas:
+# 1. — Analisar quantos clientes cancelaram
+print(tabela['Churn'].value_counts())
+# 2. — Analisar o percentual de cancelamento
+print(tabela['Churn'].value_counts(normalize=True).map('{:.2%}'.format))
+
 """Passo 5 _ Analise detalhada (buscar causa ou solução)"""
 
 
