@@ -50,5 +50,12 @@ print(tabela['Churn'].value_counts())
 print(tabela['Churn'].value_counts(normalize=True).map('{:.2%}'.format))
 
 """Passo 5 _ Analise detalhada (buscar causa ou solução)"""
+import plotly.express as px
 
+# Etapas:
+# https://plotly.com/python/histograms/ <- Dados para editar o gráfico
+# 1. — Criar gráfico
+grafico = px.histogram(tabela, x='MesesComoCliente', color='Churn')
+# 2. — Exibir o gráfico (Código funcionando no navegador Edge)
+grafico.show()
 
