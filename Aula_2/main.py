@@ -33,9 +33,14 @@ print(tabela)
 # Transformando a coluna "TotalGasto" em número
 tabela['TotalGasto'] = pd.to_numeric(tabela['TotalGasto'], errors='coerce')
 
-print(tabela.info())
 # 2. — Analisar se existe uma coluna completamente vazia.
+# Deletando colunas vazias
+tabela = tabela.dropna(how='all', axis=1)
+
 # 3. — Analisar se existe alguma informação em alguma linha vazia.
+# Deletando linhas vazias
+tabela = tabela.dropna(how='any', axis=0)
+print(tabela.info())
 
 """Passo 4 _ Analise inicial / Analise global"""
 """Passo 5 _ Analise detalhada (buscar causa ou solução)"""
