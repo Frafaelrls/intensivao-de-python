@@ -27,6 +27,16 @@ print(tabela)
 
 
 """Passo 3 _ Tratamento da Base de dados """
+# Etapas:
+# 1. — Analisar se a passe de dados está sendo lida na forma correta.
+
+# Transformando a coluna "TotalGasto" em número
+tabela['TotalGasto'] = pd.to_numeric(tabela['TotalGasto'], errors='coerce')
+
+print(tabela.info())
+# 2. — Analisar se existe uma coluna completamente vazia.
+# 3. — Analisar se existe alguma informação em alguma linha vazia.
+
 """Passo 4 _ Analise inicial / Analise global"""
 """Passo 5 _ Analise detalhada (buscar causa ou solução)"""
 
