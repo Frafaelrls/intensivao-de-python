@@ -22,7 +22,7 @@ tabela = pd.read_csv('telecom_users.csv')
 # Retirando uma coluna da tabela
 # axis=0 -> Linha
 # axis=1 -> Coluna
-tabela = tabela.drop('Unnamed: 0', axis=1)
+tabela = tabela.drop(['Unnamed: 0', 'IDCliente'], axis=1)
 print(tabela)
 
 
@@ -55,7 +55,8 @@ import plotly.express as px
 # Etapas:
 # https://plotly.com/python/histograms/ <- Dados para editar o gráfico
 # 1. — Criar gráfico
-grafico = px.histogram(tabela, x='MesesComoCliente', color='Churn')
+for coluna in tabela.columns:
+    grafico = px.histogram(tabela, x=coluna, color='Churn')
 # 2. — Exibir o gráfico (Código funcionando no navegador Edge)
-grafico.show()
+    grafico.show()
 
